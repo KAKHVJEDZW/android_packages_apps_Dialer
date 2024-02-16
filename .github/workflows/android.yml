@@ -1,0 +1,30 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "lineage-21.0" ]
+  pull_request:
+    branches: [ "lineage-21.0" ]
+
+jobs:
+  apk:
+    name: Generate APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11
+      - uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: | 
+                ${{ runner.os }}-gradle-
+      - uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: current
+          arguments: bash ./gradlew clean assembleRelease
