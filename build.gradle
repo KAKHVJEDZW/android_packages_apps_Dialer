@@ -2,6 +2,22 @@
 buildscript {
     ext.kotlin_version = '1.7.20'
 
+    plugins {
+        id 'maven-publish'
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId = 'foo'
+                artifactId = 'bar'
+                version = '0.1'
+    
+                from components.java
+            }
+        }
+    }
+    
     repositories {
         maven {
             name = "GithubPackages"
