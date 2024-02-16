@@ -1,8 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    ext.kotlin_version = '1.7.20'
 
-    plugins {
+ plugins {
         id 'maven-publish'
     }
 
@@ -17,7 +15,10 @@ buildscript {
             }
         }
     }
-    
+
+buildscript {
+    ext.kotlin_version = '1.7.20'
+
     repositories {
         maven {
             name = "GithubPackages"
