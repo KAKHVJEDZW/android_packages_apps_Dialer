@@ -27,5 +27,4 @@ jobs:
                 ${{ runner.os }}-gradle-
       - uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: current
-          arguments: bash ./gradlew clean assembleRelease
+          gradle-version: current    
