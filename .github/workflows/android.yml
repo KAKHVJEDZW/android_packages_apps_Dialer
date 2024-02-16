@@ -33,4 +33,4 @@ jobs:
         with:
           artifactName: app-release-unsigned.apk
           name: app
-          path: app/build/outputs/apk/release/
+          path: ./
